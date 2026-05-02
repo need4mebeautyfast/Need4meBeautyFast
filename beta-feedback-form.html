@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Need4Me Beta Feedback Form</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #FF1493;
+    --pink-light: #FF69B4;
+    --pink-pale: #FFE4F0;
+    --pink-dark: #C2006E;
+    --black: #1a1a2e;
+    --gray: #6b7280;
+    --white: #ffffff;
+    --card: #fff8fb;
+    --border: #ffd6ea;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #fff0f7 0%, #ffe4f0 50%, #fff0f7 100%);
+    min-height: 100vh;
+    color: var(--black);
+    padding-bottom: 40px;
+  }
+
+  /* HEADER */
+  .hero {
+    background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
+    padding: 40px 20px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 150px; height: 150px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -20px;
+    width: 120px; height: 120px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+
+  .logo-circle {
+    width: 80px; height: 80px;
+    background: white;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: white;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.85);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  /* PROGRESS BAR */
+  .progress-wrap {
+    background: white;
+    padding: 16px 20px;
+    box-shadow: 0 2px 12px rgba(255,20,147,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pink);
+    margin-bottom: 8px;
+  }
+
+  .progress-bar {
+    height: 8px;
+    background: var(--pink-pale);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--pink-light), var(--pink));
+    border-radius: 99px;
+    width: 0%;
+    transition: width 0.5s ease;
+  }
+
+  /* MAIN CONTENT */
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 16px;
+  }
+
+  /* SECTION CARDS */
+  .section-card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 24px 20px;
+    margin-bottom: 20px;
+    border: 1.5px solid var(--border);
+    box-shadow: 0 4px 20px rgba(255,20,147,0.08);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--pink-dark);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-emoji {
+    font-size: 24px;
+  }
+
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  /* NAME FIELD */
+  .field-label {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .field-label.required::after {
+    content: ' *';
+    color: var(--pink);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+    background: white;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 16px;
+    -webkit-appearance: none;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--pink);
+    box-shadow: 0 0 0 3px rgba(255,20,147,0.1);
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.6;
+  }
+
+  /* CHECKBOX ITEMS */
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 16px;
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    border: 2px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  .check-item:active {
+    transform: scale(0.98);
+  }
+
+  .check-item.checked {
+    background: var(--pink-pale);
+    border-color: var(--pink);
+  }
+
+  .check-box {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    border-radius: 8px;
+    border: 2.5px solid var(--border);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    margin-top: 1px;
+  }
+
+  .check-item.checked .check-box {
+    background: var(--pink);
+    border-color: var(--pink);
+  }
+
+  .check-icon {
+    color: white;
+    font-size: 16px;
+    display: none;
+  }
+
+  .check-item.checked .check-icon {
+    display: block;
+  }
+
+  .check-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .check-item.checked .check-text {
+    color: var(--pink-dark);
+  }
+
+  /* RATING STARS */
+  .star-rating {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .star-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 2px solid var(--border);
+    background: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .star-btn.selected {
+    background: var(--pink);
+    border-color: var(--pink);
+    transform: scale(1.1);
+  }
+
+  /* RADIO OPTIONS */
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .radio-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: white;
+    border-radius: 12px;
+    border: 2px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  .radio-item.selected {
+    background: var(--pink-pale);
+    border-color: var(--pink);
+  }
+
+  .radio-circle {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 50%;
+    border: 2.5px solid var(--border);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .radio-item.selected .radio-circle {
+    border-color: var(--pink);
+    background: var(--pink);
+  }
+
+  .radio-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: white;
+    display: none;
+  }
+
+  .radio-item.selected .radio-dot {
+    display: block;
+  }
+
+  .radio-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .radio-item.selected .radio-text {
+    color: var(--pink-dark);
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 20px 0;
+  }
+
+  /* QUESTION LABEL */
+  .q-label {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 12px;
+    display: block;
+    line-height: 1.4;
+  }
+
+  .q-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    background: var(--pink);
+    color: white;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  /* SUBMIT BUTTON */
+  .submit-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 8px 24px rgba(255,20,147,0.4);
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .submit-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 12px rgba(255,20,147,0.3);
+  }
+
+  /* SUCCESS MESSAGE */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .success-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    animation: bounce 0.6s ease;
+  }
+
+  @keyframes bounce {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  .success-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--pink-dark);
+    margin-bottom: 16px;
+  }
+
+  .success-msg {
+    font-size: 16px;
+    color: var(--gray);
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  /* BADGE */
+  .badge {
+    display: inline-block;
+    background: var(--pink);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 99px;
+    margin-left: 8px;
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+  }
+
+  .badge.free { background: #22c55e; }
+  .badge.premium { background: var(--pink); }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--gray);
+    font-size: 13px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO HEADER -->
+<div class="hero">
+  <div class="logo-circle">💄</div>
+  <h1>Need4Me<br>Filters & Backgrounds</h1>
+  <p>Beta Tester Feedback Form ✨</p>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span>Your Progress</span>
+    <span id="progress-pct">0% complete</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="container" id="form-container">
+
+  <!-- TESTER INFO -->
+  <div class="section-card">
+    <div class="section-title">
+      <span class="section-emoji">👋</span> About You
+    </div>
+    <div class="section-subtitle">Tell us a little about yourself!</div>
+
+    <label class="field-label required">Your Name</label>
+    <input type="text" placeholder="e.g. Maria Garcia" id="tester-name" />
+
+    <label class="field-label">Your Phone Model</label>
+    <input type="text" placeholder="e.g. Samsung Galaxy S23" id="phone-model" />
+
+    <label class="field-label">Android Version</label>
+    <input type="text" placeholder="e.g. Android 14 (find in Settings → About Phone)" id="android-version" />
+  </div>
+
+  <!-- SECTION 1: FIRST LAUNCH -->
+  <div class="section-card">
+    <div class="section-title">
+      <span class="section-emoji">🚀</span> First Launch
+    </div>
+    <div class="section-subtitle">Tap each box to check it off as you test!</div>
+
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">The app opens without crashing</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">The welcome/terms screen appears correctly</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">All text is clear and readable</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">The Continue button works correctly</span>
+    </div>
+  </div>
+
+  <!-- SECTION 2: PHOTO FILTERS -->
+  <div class="section-card">
+    <div class="section-title">
+      <span class="section-emoji">🎨</span> Photo Filters
+    </div>
+    <div class="section-subtitle">Test every filter and check them off!</div>
+
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Camera opens and takes a photo correctly</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Can select a photo from gallery</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Brighten filter <span class="badge free">FREE</span> works and looks good</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Cool filter <span class="badge free">FREE</span> works and looks good</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Warm filter <span class="badge free">FREE</span> works and looks good</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Pastel filter <span class="badge premium">PREMIUM</span> works</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Black & White filter <span class="badge premium">PREMIUM</span> works</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Oil Painting filter <span class="badge premium">PREMIUM</span> works</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Glam Shot filter <span class="badge premium">PREMIUM</span> works</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Intensity slider changes filter strength</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Rotate button works (rotates 90°)</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Crop button shows options and works</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Reset button restores original photo</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Save button saves photo to gallery ✅</span>
+    </div>
+  </div>
+
+  <!-- SECTION 3: BEAUTY BACKGROUNDS -->
+  <div class="section-card">
+    <div class="section-title">
+      <span class="section-emoji">🌸</span> Beauty Backgrounds
+    </div>
+    <div class="section-subtitle">Test the background replacement feature!</div>
+
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Camera preview shows correctly</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Selfie appears after taking photo</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Hot Pink background <span class="badge free">FREE</span> replaces correctly</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Black Hearts background <span class="badge free">FREE</span> replaces correctly</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Baby Blue background <span class="badge free">FREE</span> replaces correctly</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Premium backgrounds work</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">My cutout looks clean (not blurry/rough)</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Rotate buttons work correctly</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Save button saves result to gallery</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Can select photo from gallery instead of camera</span>
+    </div>
+  </div>
+
+  <!-- SECTION 4: NAVIGATION -->
+  <div class="section-card">
+    <div class="section-title">
+      <span class="section-emoji">🧭</span> Navigation
+    </div>
+    <div class="section-subtitle">Make sure everything is easy to find!</div>
+
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Profile screen opens and shows my info</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Settings screen opens correctly</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">About screen shows app info</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Back button works on every screen</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Upgrade message is clear and easy to understand</span>
+    </div>
+  </div>
+
+  <!-- FEEDBACK QUESTIONS -->
+  <div class="section-card">
+    <div class="section-title">
+      <span class="section-emoji">⭐</span> Your Ratings
+    </div>
+    <div class="section-subtitle">Tap a number to rate!</div>
+
+    <span class="q-label"><span class="q-number">1</span> Overall first impression (1 = Poor, 10 = Amazing!)</span>
+    <div class="star-rating" id="rating-overall">
+      <button class="star-btn" onclick="selectRating('rating-overall', this, 1)">1</button>
+      <button class="star-btn" onclick="selectRating('rating-overall', this, 2)">2</button>
+      <button class="star-btn" onclick="selectRating('rating-overall', this, 3)">3</button>
+      <button class="star-btn" onclick="selectRating('rating-overall', this, 4)">4</button>
+      <button class="star-btn" onclick="selectRating('rating-overall', this, 5)">5</button>
+      <button class="star-btn" onclick="selectRating('rating-overall', this, 6)">6</button>
+      <button class="star-btn" onclick="selectRating('rating-overall', this, 7)">7</button>
+      <button class="star-btn" onclick="selectRating('rating-overall', this, 8)">8</button>
+      <button class="star-btn" onclick="selectRating('rating-overall', this, 9)">9</button>
+      <button class="star-btn" onclick="selectRating('rating-overall', this, 10)">10</button>
+    </div>
+
+    <div class="divider"></div>
+
+    <span class="q-label"><span class="q-number">2</span> How does the background replacement look on your selfies?</span>
+    <div class="radio-group">
+      <div class="radio-item" onclick="selectRadio(this, 'bg-quality')">
+        <div class="radio-circle"><div class="radio-dot"></div></div>
+        <span class="radio-text">🤩 Amazing — looks super natural!</span>
+      </div>
+      <div class="radio-item" onclick="selectRadio(this, 'bg-quality')">
+        <div class="radio-circle"><div class="radio-dot"></div></div>
+        <span class="radio-text">😊 Good — mostly looks great</span>
+      </div>
+      <div class="radio-item" onclick="selectRadio(this, 'bg-quality')">
+        <div class="radio-circle"><div class="radio-dot"></div></div>
+        <span class="radio-text">😐 OK — could be better</span>
+      </div>
+      <div class="radio-item" onclick="selectRadio(this, 'bg-quality')">
+        <div class="radio-circle"><div class="radio-dot"></div></div>
+        <span class="radio-text">😟 Needs work — edges look rough</span>
+      </div>
+      <div class="radio-item" onclick="selectRadio(this, 'bg-quality')">
+        <div class="radio-circle"><div class="radio-dot"></div></div>
+        <span class="radio-text">😞 Didn't work for me</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <span class="q-label"><span class="q-number">3</span> Would you pay $1.88/month for this app?</span>
+    <div class="radio-group">
+      <div class="radio-item" onclick="selectRadio(this, 'pay-q')">
+        <div class="radio-circle"><div class="radio-dot"></div></div>
+        <span class="radio-text">💚 Yes, definitely!</span>
+      </div>
+      <div class="radio-item" onclick="selectRadio(this, 'pay-q')">
+        <div class="radio-circle"><div class="radio-dot"></div></div>
+        <span class="radio-text">🤔 Maybe, depends on more features</span>
+      </div>
+      <div class="radio-item" onclick="selectRadio(this, 'pay-q')">
+        <div class="radio-circle"><div class="radio-dot"></div></div>
+        <span class="radio-text">❌ No, I'd use a free app instead</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <span class="q-label"><span class="q-number">4</span> How is the app speed?</span>
+    <div class="radio-group">
+      <div class="radio-item" onclick="selectRadio(this, 'speed-q')">
+        <div class="radio-circle"><div class="radio-dot"></div></div>
+        <span class="radio-text">⚡ Super fast!</span>
+      </div>
+      <div class="radio-item" onclick="selectRadio(this, 'speed-q')">
+        <div class="radio-circle"><div class="radio-dot"></div></div>
+        <span class="radio-text">👍 Fast enough</span>
+      </div>
+      <div class="radio-item" onclick="selectRadio(this, 'speed-q')">
+        <div class="radio-circle"><div class="radio-dot"></div></div>
+        <span class="radio-text">🐢 A little slow sometimes</span>
+      </div>
+      <div class="radio-item" onclick="selectRadio(this, 'speed-q')">
+        <div class="radio-circle"><div class="radio-dot"></div></div>
+        <span class="radio-text">🐌 Too slow, needs improvement</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPEN QUESTIONS -->
+  <div class="section-card">
+    <div class="section-title">
+      <span class="section-emoji">💬</span> Tell Us More
+    </div>
+    <div class="section-subtitle">Type your honest thoughts — we love feedback!</div>
+
+    <span class="q-label"><span class="q-number">5</span> Which feature did you like the MOST and why?</span>
+    <textarea placeholder="Type your answer here..." id="q-fav-feature"></textarea>
+
+    <span class="q-label"><span class="q-number">6</span> Which feature needs the most improvement?</span>
+    <textarea placeholder="Type your answer here..." id="q-improve"></textarea>
+
+    <span class="q-label"><span class="q-number">7</span> Did the app crash or freeze? If yes, what happened?</span>
+    <textarea placeholder="Describe what you were doing when it crashed..." id="q-crash"></textarea>
+
+    <span class="q-label"><span class="q-number">8</span> Was anything confusing or hard to figure out?</span>
+    <textarea placeholder="Tell us what was confusing..." id="q-confusing"></textarea>
+
+    <span class="q-label"><span class="q-number">9</span> What ONE thing would make you love this app?</span>
+    <textarea placeholder="Your most important suggestion..." id="q-one-thing"></textarea>
+
+    <span class="q-label"><span class="q-number">10</span> Any other comments, bugs, or suggestions?</span>
+    <textarea placeholder="Anything else you want to share..." id="q-other"></textarea>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="section-card">
+    <div class="section-title">
+      <span class="section-emoji">🎀</span> Almost Done!
+    </div>
+    <div class="section-subtitle">Thank you so much for your time and honest feedback!</div>
+
+    <label class="field-label">Your Email (optional — only if you want a reply)</label>
+    <input type="email" placeholder="yourname@email.com" id="tester-email" />
+
+    <button class="submit-btn" onclick="submitForm()">
+      🎉 Submit My Feedback!
+    </button>
+  </div>
+
+</div>
+
+<!-- SUCCESS SCREEN -->
+<div class="success-screen" id="success-screen">
+  <div class="success-icon">🎀</div>
+  <div class="success-title">Thank You!</div>
+  <p class="success-msg">
+    Your feedback has been recorded!<br><br>
+    Vianey appreciates every single response.<br>
+    You're helping make Need4Me<br>
+    Filters & Backgrounds amazing! 💕
+  </p>
+</div>
+
+<div class="footer">
+  Need4Me Filters & Backgrounds • Beta Testing<br>
+  Made with 💕 by Vianey Galvan
+</div>
+
+<script>
+  let totalChecks = document.querySelectorAll('.check-item').length;
+  let checkedCount = 0;
+  let ratings = {};
+
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+    checkedCount = document.querySelectorAll('.check-item.checked').length;
+    updateProgress();
+  }
+
+  function selectRating(groupId, btn, val) {
+    document.querySelectorAll(`#${groupId} .star-btn`).forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    ratings[groupId] = val;
+    updateProgress();
+  }
+
+  function selectRadio(el, group) {
+    document.querySelectorAll(`[onclick*="${group}"]`).forEach(r => r.classList.remove('selected'));
+    el.classList.add('selected');
+    updateProgress();
+  }
+
+  function updateProgress() {
+    let total = 100;
+    let done = 0;
+    // Checkboxes count for 40%
+    done += (checkedCount / totalChecks) * 40;
+    // Ratings count for 20%
+    if (ratings['rating-overall']) done += 7;
+    if (document.querySelector('[onclick*="bg-quality"].selected')) done += 7;
+    if (document.querySelector('[onclick*="pay-q"].selected')) done += 6;
+    // Text answers count for 40%
+    let textFields = ['q-fav-feature','q-improve','q-crash','q-confusing','q-one-thing','q-other'];
+    textFields.forEach(id => {
+      if (document.getElementById(id).value.trim().length > 5) done += (40/6);
+    });
+    done = Math.min(Math.round(done), 100);
+    document.getElementById('progress-fill').style.width = done + '%';
+    document.getElementById('progress-pct').textContent = done + '% complete';
+  }
+
+  document.querySelectorAll('textarea, input').forEach(el => {
+    el.addEventListener('input', updateProgress);
+  });
+
+  function submitForm() {
+    let name = document.getElementById('tester-name').value.trim();
+    if (!name) {
+      alert('Please enter your name before submitting! 😊');
+      document.getElementById('tester-name').focus();
+      return;
+    }
+
+    // Collect all data
+    let checks = [];
+    document.querySelectorAll('.check-item').forEach(item => {
+      checks.push({
+        text: item.querySelector('.check-text').textContent.trim(),
+        checked: item.classList.contains('checked')
+      });
+    });
+
+    // Build email body
+    let body = `BETA FEEDBACK - ${name}\n`;
+    body += `Phone: ${document.getElementById('phone-model').value}\n`;
+    body += `Android: ${document.getElementById('android-version').value}\n\n`;
+    body += `CHECKLIST:\n`;
+    checks.forEach(c => { body += `${c.checked ? '✅' : '❌'} ${c.text}\n`; });
+    body += `\nOVERALL RATING: ${ratings['rating-overall'] || 'Not rated'}/10\n`;
+    body += `\nFAVORITE FEATURE:\n${document.getElementById('q-fav-feature').value}\n`;
+    body += `\nNEEDS IMPROVEMENT:\n${document.getElementById('q-improve').value}\n`;
+    body += `\nCRASHES:\n${document.getElementById('q-crash').value}\n`;
+    body += `\nCONFUSING PARTS:\n${document.getElementById('q-confusing').value}\n`;
+    body += `\nONE THING:\n${document.getElementById('q-one-thing').value}\n`;
+    body += `\nOTHER COMMENTS:\n${document.getElementById('q-other').value}\n`;
+
+    // Open email
+    let mailto = `mailto:need4mebeautyfast@gmail.com?subject=Beta Feedback from ${encodeURIComponent(name)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+
+    // Show success
+    setTimeout(() => {
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('success-screen').style.display = 'block';
+      window.scrollTo(0, 0);
+    }, 1000);
+  }
+</script>
+</body>
+</html>
