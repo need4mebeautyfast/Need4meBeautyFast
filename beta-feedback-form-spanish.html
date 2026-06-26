@@ -16,45 +16,39 @@
     --white: #ffffff;
     --card: #fff8fb;
     --border: #ffd6ea;
-  }
-
+}
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     font-family: 'Nunito', sans-serif;
     background: linear-gradient(135deg, #fff0f7 0%, #ffe4f0 50%, #fff0f7 100%);
     min-height: 100vh;
     color: var(--black);
     padding-bottom: 40px;
-  }
-
-  .hero {
+}
+.hero {
     background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
     padding: 40px 20px 50px;
     text-align: center;
     position: relative;
     overflow: hidden;
-  }
-
-  .hero::before {
+}
+.hero::before {
     content: '';
     position: absolute;
     top: -30px; right: -30px;
     width: 150px; height: 150px;
     background: rgba(255,255,255,0.08);
     border-radius: 50%;
-  }
-
-  .hero::after {
+}
+.hero::after {
     content: '';
     position: absolute;
     bottom: -40px; left: -20px;
     width: 120px; height: 120px;
     background: rgba(255,255,255,0.06);
     border-radius: 50%;
-  }
-
-  .logo-circle {
+}
+.logo-circle {
     width: 80px; height: 80px;
     background: white;
     border-radius: 50%;
@@ -62,72 +56,63 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 36px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  }
-
-  .hero h1 {
+}
+.hero h1 {
     font-family: 'Playfair Display', serif;
     font-size: 28px;
     color: white;
     font-weight: 900;
     line-height: 1.2;
     margin-bottom: 8px;
-  }
-
-  .hero p {
+}
+.hero p {
     color: rgba(255,255,255,0.85);
     font-size: 15px;
     font-weight: 600;
-  }
-
-  .progress-wrap {
+}
+.progress-wrap {
     background: white;
     padding: 16px 20px;
     box-shadow: 0 2px 12px rgba(255,20,147,0.1);
     position: sticky;
     top: 0;
     z-index: 100;
-  }
-
-  .progress-label {
+}
+.progress-label {
     display: flex;
     justify-content: space-between;
     font-size: 13px;
     font-weight: 700;
     color: var(--pink);
     margin-bottom: 8px;
-  }
-
-  .progress-bar {
+}
+.progress-bar {
     height: 8px;
     background: var(--pink-pale);
     border-radius: 99px;
     overflow: hidden;
-  }
-
-  .progress-fill {
+}
+.progress-fill {
     height: 100%;
     background: linear-gradient(90deg, var(--pink-light), var(--pink));
     border-radius: 99px;
     width: 0%;
     transition: width 0.5s ease;
-  }
-
-  .container {
+}
+.container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px 16px;
-  }
-
-  .section-card {
+}
+.section-card {
     background: var(--card);
     border-radius: 20px;
     padding: 24px 20px;
     margin-bottom: 20px;
     border: 1.5px solid var(--border);
     box-shadow: 0 4px 20px rgba(255,20,147,0.08);
-  }
-
-  .section-title {
+}
+.section-title {
     font-family: 'Playfair Display', serif;
     font-size: 20px;
     font-weight: 700;
@@ -136,30 +121,25 @@
     display: flex;
     align-items: center;
     gap: 10px;
-  }
-
-  .section-emoji { font-size: 24px; }
-
-  .section-subtitle {
+}
+.section-emoji { font-size: 24px; }
+.section-subtitle {
     font-size: 13px;
     color: var(--gray);
     margin-bottom: 20px;
     font-weight: 600;
-  }
-
-  .field-label {
+}
+.field-label {
     font-size: 14px;
     font-weight: 800;
     color: var(--black);
     margin-bottom: 8px;
     display: block;
-  }
-
-  .field-label.required::after {
+}
+.field-label.required::after {
     content: ' *';
     color: var(--pink);
-  }
-
+}
   input[type="text"],
   input[type="email"],
   textarea {
@@ -176,22 +156,19 @@
     transition: border-color 0.2s;
     margin-bottom: 16px;
     -webkit-appearance: none;
-  }
-
+}
   input[type="text"]:focus,
   input[type="email"]:focus,
   textarea:focus {
     border-color: var(--pink);
     box-shadow: 0 0 0 3px rgba(255,20,147,0.1);
-  }
-
+}
   textarea {
     min-height: 100px;
     resize: vertical;
     line-height: 1.6;
-  }
-
-  .check-item {
+}
+.check-item {
     display: flex;
     align-items: flex-start;
     gap: 14px;
@@ -204,16 +181,13 @@
     transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
-  }
-
-  .check-item:active { transform: scale(0.98); }
-
-  .check-item.checked {
+}
+.check-item:active { transform: scale(0.98); }
+.check-item.checked {
     background: var(--pink-pale);
     border-color: var(--pink);
-  }
-
-  .check-box {
+}
+.check-box {
     width: 26px;
     height: 26px;
     min-width: 26px;
@@ -225,39 +199,32 @@
     justify-content: center;
     transition: all 0.2s;
     margin-top: 1px;
-  }
-
-  .check-item.checked .check-box {
+}
+.check-item.checked .check-box {
     background: var(--pink);
     border-color: var(--pink);
-  }
-
-  .check-icon {
+}
+.check-icon {
     color: white;
     font-size: 16px;
     display: none;
-  }
-
-  .check-item.checked .check-icon { display: block; }
-
-  .check-text {
+}
+.check-item.checked .check-icon { display: block; }
+.check-text {
     font-size: 15px;
     font-weight: 600;
     color: var(--black);
     line-height: 1.5;
     flex: 1;
-  }
-
-  .check-item.checked .check-text { color: var(--pink-dark); }
-
-  .star-rating {
+}
+.check-item.checked .check-text { color: var(--pink-dark); }
+.star-rating {
     display: flex;
     gap: 10px;
     margin-bottom: 16px;
     flex-wrap: wrap;
-  }
-
-  .star-btn {
+}
+.star-btn {
     width: 44px;
     height: 44px;
     border-radius: 12px;
@@ -270,23 +237,20 @@
     justify-content: center;
     transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
-  }
-
-  .star-btn.selected {
+}
+.star-btn.selected {
     background: var(--pink);
     border-color: var(--pink);
     color: white;
     transform: scale(1.1);
-  }
-
-  .radio-group {
+}
+.radio-group {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 16px;
-  }
-
-  .radio-item {
+}
+.radio-item {
     display: flex;
     align-items: center;
     gap: 14px;
@@ -298,14 +262,12 @@
     transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
-  }
-
-  .radio-item.selected {
+}
+.radio-item.selected {
     background: var(--pink-pale);
     border-color: var(--pink);
-  }
-
-  .radio-circle {
+}
+.radio-circle {
     width: 24px;
     height: 24px;
     min-width: 24px;
@@ -316,47 +278,39 @@
     align-items: center;
     justify-content: center;
     transition: all 0.2s;
-  }
-
-  .radio-item.selected .radio-circle {
+}
+.radio-item.selected .radio-circle {
     border-color: var(--pink);
     background: var(--pink);
-  }
-
-  .radio-dot {
+}
+.radio-dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
     background: white;
     display: none;
-  }
-
-  .radio-item.selected .radio-dot { display: block; }
-
-  .radio-text {
+}
+.radio-item.selected .radio-dot { display: block; }
+.radio-text {
     font-size: 15px;
     font-weight: 600;
     color: var(--black);
-  }
-
-  .radio-item.selected .radio-text { color: var(--pink-dark); }
-
-  .divider {
+}
+.radio-item.selected .radio-text { color: var(--pink-dark); }
+.divider {
     height: 1px;
     background: var(--border);
     margin: 20px 0;
-  }
-
-  .q-label {
+}
+.q-label {
     font-size: 15px;
     font-weight: 800;
     color: var(--black);
     margin-bottom: 12px;
     display: block;
     line-height: 1.4;
-  }
-
-  .q-number {
+}
+.q-number {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -369,9 +323,8 @@
     font-weight: 800;
     margin-right: 8px;
     flex-shrink: 0;
-  }
-
-  .submit-btn {
+}
+.submit-btn {
     width: 100%;
     padding: 18px;
     background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
@@ -387,47 +340,40 @@
     letter-spacing: 0.5px;
     margin-top: 10px;
     -webkit-tap-highlight-color: transparent;
-  }
-
-  .submit-btn:active {
+}
+.submit-btn:active {
     transform: scale(0.98);
     box-shadow: 0 4px 12px rgba(255,20,147,0.3);
-  }
-
-  .success-screen {
+}
+.success-screen {
     display: none;
     text-align: center;
     padding: 60px 20px;
-  }
-
-  .success-icon {
+}
+.success-icon {
     font-size: 80px;
     margin-bottom: 20px;
     animation: bounce 0.6s ease;
-  }
-
+}
   @keyframes bounce {
     0% { transform: scale(0); }
     60% { transform: scale(1.2); }
     100% { transform: scale(1); }
-  }
-
-  .success-title {
+}
+.success-title {
     font-family: 'Playfair Display', serif;
     font-size: 32px;
     font-weight: 900;
     color: var(--pink-dark);
     margin-bottom: 16px;
-  }
-
-  .success-msg {
+}
+.success-msg {
     font-size: 16px;
     color: var(--gray);
     font-weight: 600;
     line-height: 1.6;
-  }
-
-  .badge {
+}
+.badge {
     display: inline-block;
     color: white;
     font-size: 11px;
@@ -437,25 +383,23 @@
     margin-left: 8px;
     vertical-align: middle;
     letter-spacing: 0.5px;
-  }
-
-  .badge.free { background: #22c55e; }
-  .badge.premium { background: var(--pink); }
-
-  .footer {
+}
+.badge.free { background: #22c55e; }
+.badge.premium { background: var(--pink); }
+.footer {
     text-align: center;
     padding: 20px;
     color: var(--gray);
     font-size: 13px;
     font-weight: 600;
-  }
+}
 </style>
 </head>
 <body>
 
 <div class="hero">
   <div class="logo-circle">💄</div>
-  <h1>Need4Me<br>Filters & Backgrounds</h1>
+  <h1>Need4Me<br>Filters &amp; Backgrounds</h1>
   <p>Formulario de Beta Tester ✨</p>
 </div>
 
@@ -471,7 +415,6 @@
 
 <div class="container" id="form-container">
 
-  <!-- SOBRE TI -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">👋</span> Sobre Ti
@@ -488,7 +431,6 @@
     <input type="text" placeholder="ej. Android 14 (Ajustes → Acerca del teléfono)" id="android-version" />
   </div>
 
-  <!-- PRIMERA VEZ -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">🚀</span> Primera Vez que Abres la App
@@ -513,7 +455,6 @@
     </div>
   </div>
 
-  <!-- FILTROS DE FOTOS -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">🎨</span> Filtros de Fotos
@@ -546,15 +487,19 @@
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
-      <span class="check-text">Filtro Blanco y Negro <span class="badge premium">PREMIUM</span> funciona</span>
-    </div>
-    <div class="check-item" onclick="toggleCheck(this)">
-      <div class="check-box"><span class="check-icon">✓</span></div>
       <span class="check-text">Filtro Pintura al Óleo <span class="badge premium">PREMIUM</span> funciona</span>
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
       <span class="check-text">Filtro Glam Shot <span class="badge premium">PREMIUM</span> funciona</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Filtro Blanco y Negro <span class="badge premium">PREMIUM</span> funciona</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Filtro Mejorar <span class="badge premium">PREMIUM</span> funciona</span>
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
@@ -566,7 +511,7 @@
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
-      <span class="check-text">El botón Recortar muestra opciones y funciona</span>
+      <span class="check-text">La herramienta de Recortar permite arrastrar las esquinas/lados libremente y funciona</span>
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
@@ -578,7 +523,6 @@
     </div>
   </div>
 
-  <!-- FONDOS DE BELLEZA -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">🌸</span> Fondos de Belleza
@@ -595,15 +539,19 @@
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
-      <span class="check-text">Fondo Rosa Fuerte <span class="badge free">GRATIS</span> se reemplaza bien</span>
+      <span class="check-text">Fondo Cheetah Rosa <span class="badge free">GRATIS</span> se reemplaza bien</span>
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
-      <span class="check-text">Fondo Corazones Negros <span class="badge free">GRATIS</span> se reemplaza bien</span>
+      <span class="check-text">Fondo Corazones Rosas <span class="badge free">GRATIS</span> se reemplaza bien</span>
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
-      <span class="check-text">Fondo Azul Bebé <span class="badge free">GRATIS</span> se reemplaza bien</span>
+      <span class="check-text">Fondo Bandera de EE.UU. <span class="badge free">GRATIS</span> se reemplaza bien</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Fondo Líneas de Arcoíris <span class="badge free">GRATIS</span> se reemplaza bien</span>
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
@@ -615,7 +563,11 @@
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
-      <span class="check-text">Los botones Rotar funcionan correctamente</span>
+      <span class="check-text">El botón Rotar funciona correctamente</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">La herramienta de Recortar permite arrastrar las esquinas/lados libremente y funciona</span>
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
@@ -627,7 +579,6 @@
     </div>
   </div>
 
-  <!-- NAVEGACIÓN -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">🧭</span> Navegación
@@ -656,7 +607,6 @@
     </div>
   </div>
 
-  <!-- CALIFICACIONES -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">⭐</span> Tus Calificaciones
@@ -744,12 +694,11 @@
     </div>
   </div>
 
-  <!-- PREGUNTAS ABIERTAS -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">💬</span> Cuéntanos Más
     </div>
-    <div class="section-subtitle">¡Escribe tu opinión honesta — ¡nos encanta el feedback!</div>
+    <div class="section-subtitle">¡Escribe tu opinión honesta — nos encanta el feedback!</div>
 
     <span class="q-label"><span class="q-number">5</span> ¿Qué función te gustó MÁS y por qué?</span>
     <textarea placeholder="Escribe tu respuesta aquí..." id="q-fav-feature"></textarea>
@@ -770,7 +719,6 @@
     <textarea placeholder="Lo que quieras compartir..." id="q-other"></textarea>
   </div>
 
-  <!-- ENVIAR -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">🎀</span> ¡Ya casi terminas!
@@ -787,7 +735,6 @@
 
 </div>
 
-<!-- PANTALLA DE ÉXITO -->
 <div class="success-screen" id="success-screen">
   <div class="success-icon">🎀</div>
   <div class="success-title">¡Muchas Gracias!</div>
@@ -795,12 +742,12 @@
     ¡Tu opinión ha sido enviada!<br><br>
     Vianey aprecia cada respuesta.<br>
     ¡Estás ayudando a hacer Need4Me<br>
-    Filters & Backgrounds increíble! 💕
+    Filters &amp; Backgrounds increíble! 💕
   </p>
 </div>
 
 <div class="footer">
-  Need4Me Filters & Backgrounds • Beta Testing<br>
+  Need4Me Filters &amp; Backgrounds • Beta Testing<br>
   Hecho con 💕 por Vianey Galvan
 </div>
 
