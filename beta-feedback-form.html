@@ -6,491 +6,419 @@
 <title>Need4Me Beta Feedback Form</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --pink: #FF1493;
-    --pink-light: #FF69B4;
-    --pink-pale: #FFE4F0;
-    --pink-dark: #C2006E;
-    --black: #1a1a2e;
-    --gray: #6b7280;
-    --white: #ffffff;
-    --card: #fff8fb;
-    --border: #ffd6ea;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Nunito', sans-serif;
-    background: linear-gradient(135deg, #fff0f7 0%, #ffe4f0 50%, #fff0f7 100%);
-    min-height: 100vh;
-    color: var(--black);
-    padding-bottom: 40px;
-  }
-
-  /* HEADER */
-  .hero {
-    background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
-    padding: 40px 20px 50px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -30px; right: -30px;
-    width: 150px; height: 150px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 50%;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -40px; left: -20px;
-    width: 120px; height: 120px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 50%;
-  }
-
-  .logo-circle {
-    width: 80px; height: 80px;
-    background: white;
-    border-radius: 50%;
-    margin: 0 auto 16px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 36px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    color: white;
-    font-weight: 900;
-    line-height: 1.2;
-    margin-bottom: 8px;
-  }
-
-  .hero p {
-    color: rgba(255,255,255,0.85);
-    font-size: 15px;
-    font-weight: 600;
-  }
-
-  /* PROGRESS BAR */
-  .progress-wrap {
-    background: white;
-    padding: 16px 20px;
-    box-shadow: 0 2px 12px rgba(255,20,147,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .progress-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--pink);
-    margin-bottom: 8px;
-  }
-
-  .progress-bar {
-    height: 8px;
-    background: var(--pink-pale);
-    border-radius: 99px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--pink-light), var(--pink));
-    border-radius: 99px;
-    width: 0%;
-    transition: width 0.5s ease;
-  }
-
-  /* MAIN CONTENT */
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px 16px;
-  }
-
-  /* SECTION CARDS */
-  .section-card {
-    background: var(--card);
-    border-radius: 20px;
-    padding: 24px 20px;
-    margin-bottom: 20px;
-    border: 1.5px solid var(--border);
-    box-shadow: 0 4px 20px rgba(255,20,147,0.08);
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--pink-dark);
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .section-emoji {
-    font-size: 24px;
-  }
-
-  .section-subtitle {
-    font-size: 13px;
-    color: var(--gray);
-    margin-bottom: 20px;
-    font-weight: 600;
-  }
-
-  /* NAME FIELD */
-  .field-label {
-    font-size: 14px;
-    font-weight: 800;
-    color: var(--black);
-    margin-bottom: 8px;
-    display: block;
-  }
-
-  .field-label.required::after {
-    content: ' *';
-    color: var(--pink);
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  textarea,
-  select {
-    width: 100%;
-    padding: 14px 16px;
-    border: 2px solid var(--border);
-    border-radius: 12px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--black);
-    background: white;
-    outline: none;
-    transition: border-color 0.2s;
-    margin-bottom: 16px;
-    -webkit-appearance: none;
-  }
-
-  input[type="text"]:focus,
-  input[type="email"]:focus,
-  input[type="tel"]:focus,
-  textarea:focus,
-  select:focus {
-    border-color: var(--pink);
-    box-shadow: 0 0 0 3px rgba(255,20,147,0.1);
-  }
-
-  textarea {
-    min-height: 100px;
-    resize: vertical;
-    line-height: 1.6;
-  }
-
-  /* CHECKBOX ITEMS */
-  .check-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 14px 16px;
-    background: white;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    border: 2px solid var(--border);
-    cursor: pointer;
-    transition: all 0.2s;
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-  }
-
-  .check-item:active {
-    transform: scale(0.98);
-  }
-
-  .check-item.checked {
-    background: var(--pink-pale);
-    border-color: var(--pink);
-  }
-
-  .check-box {
-    width: 26px;
-    height: 26px;
-    min-width: 26px;
-    border-radius: 8px;
-    border: 2.5px solid var(--border);
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-    margin-top: 1px;
-  }
-
-  .check-item.checked .check-box {
-    background: var(--pink);
-    border-color: var(--pink);
-  }
-
-  .check-icon {
-    color: white;
-    font-size: 16px;
-    display: none;
-  }
-
-  .check-item.checked .check-icon {
-    display: block;
-  }
-
-  .check-text {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--black);
-    line-height: 1.5;
-    flex: 1;
-  }
-
-  .check-item.checked .check-text {
-    color: var(--pink-dark);
-  }
-
-  /* RATING STARS */
-  .star-rating {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-  }
-
-  .star-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    border: 2px solid var(--border);
-    background: white;
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .star-btn.selected {
-    background: var(--pink);
-    border-color: var(--pink);
-    transform: scale(1.1);
-  }
-
-  /* RADIO OPTIONS */
-  .radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-
-  .radio-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 16px;
-    background: white;
-    border-radius: 12px;
-    border: 2px solid var(--border);
-    cursor: pointer;
-    transition: all 0.2s;
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-  }
-
-  .radio-item.selected {
-    background: var(--pink-pale);
-    border-color: var(--pink);
-  }
-
-  .radio-circle {
-    width: 24px;
-    height: 24px;
-    min-width: 24px;
-    border-radius: 50%;
-    border: 2.5px solid var(--border);
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-  }
-
-  .radio-item.selected .radio-circle {
-    border-color: var(--pink);
-    background: var(--pink);
-  }
-
-  .radio-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: white;
-    display: none;
-  }
-
-  .radio-item.selected .radio-dot {
-    display: block;
-  }
-
-  .radio-text {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--black);
-  }
-
-  .radio-item.selected .radio-text {
-    color: var(--pink-dark);
-  }
-
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 20px 0;
-  }
-
-  /* QUESTION LABEL */
-  .q-label {
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--black);
-    margin-bottom: 12px;
-    display: block;
-    line-height: 1.4;
-  }
-
-  .q-number {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 26px;
-    height: 26px;
-    background: var(--pink);
-    color: white;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 800;
-    margin-right: 8px;
-    flex-shrink: 0;
-  }
-
-  /* SUBMIT BUTTON */
-  .submit-btn {
-    width: 100%;
-    padding: 18px;
-    background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
-    color: white;
-    border: none;
-    border-radius: 16px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 18px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 8px 24px rgba(255,20,147,0.4);
-    letter-spacing: 0.5px;
-    margin-top: 10px;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .submit-btn:active {
-    transform: scale(0.98);
-    box-shadow: 0 4px 12px rgba(255,20,147,0.3);
-  }
-
-  /* SUCCESS MESSAGE */
-  .success-screen {
-    display: none;
-    text-align: center;
-    padding: 60px 20px;
-  }
-
-  .success-icon {
-    font-size: 80px;
-    margin-bottom: 20px;
-    animation: bounce 0.6s ease;
-  }
-
-  @keyframes bounce {
-    0% { transform: scale(0); }
-    60% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-  }
-
-  .success-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    font-weight: 900;
-    color: var(--pink-dark);
-    margin-bottom: 16px;
-  }
-
-  .success-msg {
-    font-size: 16px;
-    color: var(--gray);
-    font-weight: 600;
-    line-height: 1.6;
-  }
-
-  /* BADGE */
-  .badge {
-    display: inline-block;
-    background: var(--pink);
-    color: white;
-    font-size: 11px;
-    font-weight: 800;
-    padding: 3px 10px;
-    border-radius: 99px;
-    margin-left: 8px;
-    vertical-align: middle;
-    letter-spacing: 0.5px;
-  }
-
-  .badge.free { background: #22c55e; }
-  .badge.premium { background: var(--pink); }
-
-  /* FOOTER */
-  .footer {
-    text-align: center;
-    padding: 20px;
-    color: var(--gray);
-    font-size: 13px;
-    font-weight: 600;
-  }
+:root {
+  --pink: #FF1493;
+  --pink-light: #FF69B4;
+  --pink-pale: #FFE4F0;
+  --pink-dark: #C2006E;
+  --black: #1a1a2e;
+  --gray: #6b7280;
+  --white: #ffffff;
+  --card: #fff8fb;
+  --border: #ffd6ea;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(135deg, #fff0f7 0%, #ffe4f0 50%, #fff0f7 100%);
+  min-height: 100vh;
+  color: var(--black);
+  padding-bottom: 40px;
+}
+.hero {
+  background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
+  padding: 40px 20px 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 150px; height: 150px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -20px;
+  width: 120px; height: 120px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+.logo-circle {
+  width: 80px; height: 80px;
+  background: white;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: white;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.hero p {
+  color: rgba(255,255,255,0.85);
+  font-size: 15px;
+  font-weight: 600;
+}
+.progress-wrap {
+  background: white;
+  padding: 16px 20px;
+  box-shadow: 0 2px 12px rgba(255,20,147,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--pink);
+  margin-bottom: 8px;
+}
+.progress-bar {
+  height: 8px;
+  background: var(--pink-pale);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pink-light), var(--pink));
+  border-radius: 99px;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+.section-card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 24px 20px;
+  margin-bottom: 20px;
+  border: 1.5px solid var(--border);
+  box-shadow: 0 4px 20px rgba(255,20,147,0.08);
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--pink-dark);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-emoji {
+  font-size: 24px;
+}
+.section-subtitle {
+  font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.field-label {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--black);
+  margin-bottom: 8px;
+  display: block;
+}
+.field-label.required::after {
+  content: ' *';
+  color: var(--pink);
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--black);
+  background: white;
+  outline: none;
+  transition: border-color 0.2s;
+  margin-bottom: 16px;
+  -webkit-appearance: none;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(255,20,147,0.1);
+}
+textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.6;
+}
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.check-item:active {
+  transform: scale(0.98);
+}
+.check-item.checked {
+  background: var(--pink-pale);
+  border-color: var(--pink);
+}
+.check-box {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  border-radius: 8px;
+  border: 2.5px solid var(--border);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  margin-top: 1px;
+}
+.check-item.checked .check-box {
+  background: var(--pink);
+  border-color: var(--pink);
+}
+.check-icon {
+  color: white;
+  font-size: 16px;
+  display: none;
+}
+.check-item.checked .check-icon {
+  display: block;
+}
+.check-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.5;
+  flex: 1;
+}
+.check-item.checked .check-text {
+  color: var(--pink-dark);
+}
+.star-rating {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.star-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.star-btn.selected {
+  background: var(--pink);
+  border-color: var(--pink);
+  transform: scale(1.1);
+}
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: white;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.radio-item.selected {
+  background: var(--pink-pale);
+  border-color: var(--pink);
+}
+.radio-circle {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  border: 2.5px solid var(--border);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.radio-item.selected .radio-circle {
+  border-color: var(--pink);
+  background: var(--pink);
+}
+.radio-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  display: none;
+}
+.radio-item.selected .radio-dot {
+  display: block;
+}
+.radio-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--black);
+}
+.radio-item.selected .radio-text {
+  color: var(--pink-dark);
+}
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 20px 0;
+}
+.q-label {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--black);
+  margin-bottom: 12px;
+  display: block;
+  line-height: 1.4;
+}
+.q-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--pink);
+  color: white;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+.submit-btn {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 8px 24px rgba(255,20,147,0.4);
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  -webkit-tap-highlight-color: transparent;
+}
+.submit-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 12px rgba(255,20,147,0.3);
+}
+.success-screen {
+  display: none;
+  text-align: center;
+  padding: 60px 20px;
+}
+.success-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+  animation: bounce 0.6s ease;
+}
+@keyframes bounce {
+  0% { transform: scale(0); }
+  60% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+.success-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--pink-dark);
+  margin-bottom: 16px;
+}
+.success-msg {
+  font-size: 16px;
+  color: var(--gray);
+  font-weight: 600;
+  line-height: 1.6;
+}
+.badge {
+  display: inline-block;
+  background: var(--pink);
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 99px;
+  margin-left: 8px;
+  vertical-align: middle;
+  letter-spacing: 0.5px;
+}
+.badge.free { background: #22c55e; }
+.badge.premium { background: var(--pink); }
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--gray);
+  font-size: 13px;
+  font-weight: 600;
+}
 </style>
 </head>
 <body>
 
-<!-- HERO HEADER -->
 <div class="hero">
   <div class="logo-circle">💄</div>
-  <h1>Need4Me<br>Filters & Backgrounds</h1>
+  <h1>Need4Me<br>Filters &amp; Backgrounds</h1>
   <p>Beta Tester Feedback Form ✨</p>
 </div>
 
-<!-- PROGRESS BAR -->
 <div class="progress-wrap">
   <div class="progress-label">
     <span>Your Progress</span>
@@ -501,10 +429,8 @@
   </div>
 </div>
 
-<!-- FORM -->
 <div class="container" id="form-container">
 
-  <!-- TESTER INFO -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">👋</span> About You
@@ -521,7 +447,6 @@
     <input type="text" placeholder="e.g. Android 14 (find in Settings → About Phone)" id="android-version" />
   </div>
 
-  <!-- SECTION 1: FIRST LAUNCH -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">🚀</span> First Launch
@@ -546,7 +471,6 @@
     </div>
   </div>
 
-  <!-- SECTION 2: PHOTO FILTERS -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">🎨</span> Photo Filters
@@ -579,15 +503,19 @@
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
-      <span class="check-text">Black & White filter <span class="badge premium">PREMIUM</span> works</span>
-    </div>
-    <div class="check-item" onclick="toggleCheck(this)">
-      <div class="check-box"><span class="check-icon">✓</span></div>
       <span class="check-text">Oil Painting filter <span class="badge premium">PREMIUM</span> works</span>
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
       <span class="check-text">Glam Shot filter <span class="badge premium">PREMIUM</span> works</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Black &amp; White filter <span class="badge premium">PREMIUM</span> works</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Enhance filter <span class="badge premium">PREMIUM</span> works</span>
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
@@ -599,7 +527,7 @@
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
-      <span class="check-text">Crop button shows options and works</span>
+      <span class="check-text">Crop tool lets you drag corners/sides freely and works</span>
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
@@ -611,7 +539,6 @@
     </div>
   </div>
 
-  <!-- SECTION 3: BEAUTY BACKGROUNDS -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">🌸</span> Beauty Backgrounds
@@ -628,15 +555,19 @@
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
-      <span class="check-text">Hot Pink background <span class="badge free">FREE</span> replaces correctly</span>
+      <span class="check-text">Pink Cheetah background <span class="badge free">FREE</span> replaces correctly</span>
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
-      <span class="check-text">Black Hearts background <span class="badge free">FREE</span> replaces correctly</span>
+      <span class="check-text">Pink Hearts background <span class="badge free">FREE</span> replaces correctly</span>
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
-      <span class="check-text">Baby Blue background <span class="badge free">FREE</span> replaces correctly</span>
+      <span class="check-text">US Flag background <span class="badge free">FREE</span> replaces correctly</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Rainbow Lines background <span class="badge free">FREE</span> replaces correctly</span>
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
@@ -648,7 +579,11 @@
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
-      <span class="check-text">Rotate buttons work correctly</span>
+      <span class="check-text">Rotate button works correctly</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <span class="check-text">Crop tool lets you drag corners/sides freely and works</span>
     </div>
     <div class="check-item" onclick="toggleCheck(this)">
       <div class="check-box"><span class="check-icon">✓</span></div>
@@ -660,7 +595,6 @@
     </div>
   </div>
 
-  <!-- SECTION 4: NAVIGATION -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">🧭</span> Navigation
@@ -689,7 +623,6 @@
     </div>
   </div>
 
-  <!-- FEEDBACK QUESTIONS -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">⭐</span> Your Ratings
@@ -777,7 +710,6 @@
     </div>
   </div>
 
-  <!-- OPEN QUESTIONS -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">💬</span> Tell Us More
@@ -803,7 +735,6 @@
     <textarea placeholder="Anything else you want to share..." id="q-other"></textarea>
   </div>
 
-  <!-- SUBMIT -->
   <div class="section-card">
     <div class="section-title">
       <span class="section-emoji">🎀</span> Almost Done!
@@ -820,7 +751,6 @@
 
 </div>
 
-<!-- SUCCESS SCREEN -->
 <div class="success-screen" id="success-screen">
   <div class="success-icon">🎀</div>
   <div class="success-title">Thank You!</div>
@@ -828,104 +758,101 @@
     Your feedback has been recorded!<br><br>
     Vianey appreciates every single response.<br>
     You're helping make Need4Me<br>
-    Filters & Backgrounds amazing! 💕
+    Filters &amp; Backgrounds amazing! 💕
   </p>
 </div>
 
 <div class="footer">
-  Need4Me Filters & Backgrounds • Beta Testing<br>
+  Need4Me Filters &amp; Backgrounds • Beta Testing<br>
   Made with 💕 by Vianey Galvan
 </div>
 
 <script>
-  let totalChecks = document.querySelectorAll('.check-item').length;
-  let checkedCount = 0;
-  let ratings = {};
+let totalChecks = document.querySelectorAll('.check-item').length;
+let checkedCount = 0;
+let ratings = {};
 
-  function toggleCheck(el) {
-    el.classList.toggle('checked');
-    checkedCount = document.querySelectorAll('.check-item.checked').length;
-    updateProgress();
-  }
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  checkedCount = document.querySelectorAll('.check-item.checked').length;
+  updateProgress();
+}
 
-  function selectRating(groupId, btn, val) {
-    document.querySelectorAll(`#${groupId} .star-btn`).forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
-    ratings[groupId] = val;
-    updateProgress();
-  }
+function selectRating(groupId, btn, val) {
+  document.querySelectorAll(`#${groupId} .star-btn`).forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  ratings[groupId] = val;
+  updateProgress();
+}
 
-  function selectRadio(el, group) {
-    document.querySelectorAll(`[onclick*="${group}"]`).forEach(r => r.classList.remove('selected'));
-    el.classList.add('selected');
-    updateProgress();
-  }
+function selectRadio(el, group) {
+  document.querySelectorAll(`[onclick*="${group}"]`).forEach(r => r.classList.remove('selected'));
+  el.classList.add('selected');
+  updateProgress();
+}
 
-  function updateProgress() {
-    let total = 100;
-    let done = 0;
-    // Checkboxes count for 40%
-    done += (checkedCount / totalChecks) * 40;
-    // Ratings count for 20%
-    if (ratings['rating-overall']) done += 7;
-    if (document.querySelector('[onclick*="bg-quality"].selected')) done += 7;
-    if (document.querySelector('[onclick*="pay-q"].selected')) done += 6;
-    // Text answers count for 40%
-    let textFields = ['q-fav-feature','q-improve','q-crash','q-confusing','q-one-thing','q-other'];
-    textFields.forEach(id => {
-      if (document.getElementById(id).value.trim().length > 5) done += (40/6);
-    });
-    done = Math.min(Math.round(done), 100);
-    document.getElementById('progress-fill').style.width = done + '%';
-    document.getElementById('progress-pct').textContent = done + '% complete';
-  }
+function updateProgress() {
+  let total = 100;
+  let done = 0;
 
-  document.querySelectorAll('textarea, input').forEach(el => {
-    el.addEventListener('input', updateProgress);
+  done += (checkedCount / totalChecks) * 40;
+
+  if (ratings['rating-overall']) done += 7;
+  if (document.querySelector('[onclick*="bg-quality"].selected')) done += 7;
+  if (document.querySelector('[onclick*="pay-q"].selected')) done += 6;
+
+  let textFields = ['q-fav-feature','q-improve','q-crash','q-confusing','q-one-thing','q-other'];
+  textFields.forEach(id => {
+    if (document.getElementById(id).value.trim().length > 5) done += (40/6);
   });
 
-  function submitForm() {
-    let name = document.getElementById('tester-name').value.trim();
-    if (!name) {
-      alert('Please enter your name before submitting! 😊');
-      document.getElementById('tester-name').focus();
-      return;
-    }
+  done = Math.min(Math.round(done), 100);
+  document.getElementById('progress-fill').style.width = done + '%';
+  document.getElementById('progress-pct').textContent = done + '% complete';
+}
 
-    // Collect all data
-    let checks = [];
-    document.querySelectorAll('.check-item').forEach(item => {
-      checks.push({
-        text: item.querySelector('.check-text').textContent.trim(),
-        checked: item.classList.contains('checked')
-      });
-    });
+document.querySelectorAll('textarea, input').forEach(el => {
+  el.addEventListener('input', updateProgress);
+});
 
-    // Build email body
-    let body = `BETA FEEDBACK - ${name}\n`;
-    body += `Phone: ${document.getElementById('phone-model').value}\n`;
-    body += `Android: ${document.getElementById('android-version').value}\n\n`;
-    body += `CHECKLIST:\n`;
-    checks.forEach(c => { body += `${c.checked ? '✅' : '❌'} ${c.text}\n`; });
-    body += `\nOVERALL RATING: ${ratings['rating-overall'] || 'Not rated'}/10\n`;
-    body += `\nFAVORITE FEATURE:\n${document.getElementById('q-fav-feature').value}\n`;
-    body += `\nNEEDS IMPROVEMENT:\n${document.getElementById('q-improve').value}\n`;
-    body += `\nCRASHES:\n${document.getElementById('q-crash').value}\n`;
-    body += `\nCONFUSING PARTS:\n${document.getElementById('q-confusing').value}\n`;
-    body += `\nONE THING:\n${document.getElementById('q-one-thing').value}\n`;
-    body += `\nOTHER COMMENTS:\n${document.getElementById('q-other').value}\n`;
-
-    // Open email
-    let mailto = `mailto:need4mebeautyfast@gmail.com?subject=Beta Feedback from ${encodeURIComponent(name)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-
-    // Show success
-    setTimeout(() => {
-      document.getElementById('form-container').style.display = 'none';
-      document.getElementById('success-screen').style.display = 'block';
-      window.scrollTo(0, 0);
-    }, 1000);
+function submitForm() {
+  let name = document.getElementById('tester-name').value.trim();
+  if (!name) {
+    alert('Please enter your name before submitting! 😊');
+    document.getElementById('tester-name').focus();
+    return;
   }
+
+  let checks = [];
+  document.querySelectorAll('.check-item').forEach(item => {
+    checks.push({
+      text: item.querySelector('.check-text').textContent.trim(),
+      checked: item.classList.contains('checked')
+    });
+  });
+
+  let body = `BETA FEEDBACK - ${name}\n`;
+  body += `Phone: ${document.getElementById('phone-model').value}\n`;
+  body += `Android: ${document.getElementById('android-version').value}\n\n`;
+  body += `CHECKLIST:\n`;
+  checks.forEach(c => { body += `${c.checked ? '✅' : '❌'} ${c.text}\n`; });
+  body += `\nOVERALL RATING: ${ratings['rating-overall'] || 'Not rated'}/10\n`;
+  body += `\nFAVORITE FEATURE:\n${document.getElementById('q-fav-feature').value}\n`;
+  body += `\nNEEDS IMPROVEMENT:\n${document.getElementById('q-improve').value}\n`;
+  body += `\nCRASHES:\n${document.getElementById('q-crash').value}\n`;
+  body += `\nCONFUSING PARTS:\n${document.getElementById('q-confusing').value}\n`;
+  body += `\nONE THING:\n${document.getElementById('q-one-thing').value}\n`;
+  body += `\nOTHER COMMENTS:\n${document.getElementById('q-other').value}\n`;
+
+  let mailto = `mailto:need4mebeautyfast@gmail.com?subject=Beta Feedback from ${encodeURIComponent(name)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailto;
+
+  setTimeout(() => {
+    document.getElementById('form-container').style.display = 'none';
+    document.getElementById('success-screen').style.display = 'block';
+    window.scrollTo(0, 0);
+  }, 1000);
+}
 </script>
 </body>
 </html>
